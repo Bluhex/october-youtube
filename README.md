@@ -44,7 +44,7 @@ Inside the videos array each video object contains the following:
 #### Simple template 
 
 ``` twig
-{{ set videos = __SELF.videos }}
+{% set videos = __SELF__.videos %}
 {% for video in videos %}
   <a href="{{ video.link }}">
     <img src="{{ video.thumbnail }}" alt="{{ video.title }}">
