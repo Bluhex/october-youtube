@@ -1,0 +1,12 @@
+fields:
+    api_key:
+        span: left
+        label: API Key
+        commentAbove: YouTube API Key
+        commentBelow: Get a YouTube API Key by creating a project at  https://console.developers.google.com/project and enable the YouTube Data API v3
+    cache_time:
+        span: left
+        label: Minutes cached
+        commentAbove: Time, in minutes that video results should be cached
+        type: number
+        default: 60
