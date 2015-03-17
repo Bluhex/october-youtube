@@ -29,7 +29,7 @@ Use the ```Latest Videos``` component to display a list of the latest videos for
 
 - ```max_items```: Maximum number of videos to display, at this time there is no pagination support.
 
-### Creating a custom template
+### Creating a custom partial
 
 Under the ```CMS > Partials``` menu, create a new partial called ``` latestVideos/default.htm ```. 
 
@@ -41,7 +41,7 @@ Inside the videos array each video object contains the following:
 - ``description``: Excerpt of the video description
 - ``published_at``: Carbon date of the publish date
 
-#### Simple template 
+#### Simple partial 
 
 ``` twig
 {% set videos = __SELF__.videos %}
