@@ -31,7 +31,7 @@ Use the ```Latest Videos``` component to display a list of the latest videos for
 
 ### Creating a custom template
 
-Under the ```CMS > Partials``` menu, create a new partial called ``` latestvideos/default.htm ```. 
+Under the ```CMS > Partials``` menu, create a new partial called ``` latestVideos/default.htm ```. 
 
 Inside the videos array each video object contains the following:
 
