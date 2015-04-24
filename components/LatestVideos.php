@@ -51,7 +51,7 @@ class LatestVideos extends ComponentBase
     private function getLatest()
     {
         try {
-            // Crreate the Google Client
+            // Create the Google Client
             $client = new Google_Client();
             $client->setApplicationName("Bluhex Website");
             $client->setDeveloperKey(Settings::get('api_key'));
@@ -67,6 +67,7 @@ class LatestVideos extends ComponentBase
             $videos = [];
             foreach ($results['items'] as $item) {
                 array_push($videos, array(
+					'id' => $item['id']['videoId'],
                     'link' => 'http://youtube.com/watch?v=' . $item['id']['videoId'],
                     'title' => $item['snippet']['title'],
                     'thumbnail' => 'http://img.youtube.com/vi/' . $item['id']['videoId'] . '/maxresdefault.jpg',
