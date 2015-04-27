@@ -20,7 +20,7 @@ class YouTubeClient {
         $settings = Settings::instance();
 
         if (!strlen($settings->api_key))
-            throw new ApplicationException('Google API access is not setup. Please configure in the system settings.');
+            throw new ApplicationException('Google API access requires an API Key. Please add your key to Settings / Misc / YouTube');
 
         // Create the Google Client
         $client = new Google_Client();

@@ -35,7 +35,7 @@ class Plugin extends PluginBase
     {
         return [
             'config' => [
-                'label'       => 'YouTube Videos',
+                'label'       => 'YouTube',
                 'icon'        => 'icon-youtube-play',
                 'description' => 'Configure YouTube API Key and Channel settings',
                 'class'       => 'Bluhex\YouTube\Models\Settings',
