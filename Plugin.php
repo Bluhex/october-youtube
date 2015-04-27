@@ -21,7 +21,8 @@ class Plugin extends PluginBase
             'name'        => 'Youtube Videos',
             'description' => 'Provides a component to display YouTube videos',
             'author'      => 'Bluhex Studios',
-            'icon'        => 'icon-youtube-play'
+            'icon'        => 'icon-youtube-play',
+            'homepage'    => 'https://github.com/bluhex/october-youtube'
         ];
     }
 
