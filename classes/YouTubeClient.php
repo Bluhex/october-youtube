@@ -48,13 +48,20 @@ class YouTubeClient {
             // Parse the results
             $videos = [];
             foreach ($results['items'] as $item) {
+
+                if ($item->getId()->getKind() != 'youtube#video') {
+                    continue;
+                }
+
+                $thumbnails = $item->snippet->getThumbnails();
+
                 array_push($videos, array(
-                    'id' => $item['id']['videoId'],
-                    'link' => 'http://youtube.com/watch?v=' . $item['id']['videoId'],
-                    'title' => $item['snippet']['title'],
-                    'thumbnail' => 'http://img.youtube.com/vi/' . $item['id']['videoId'] . '/maxresdefault.jpg',
-                    'description' => $item['snippet']['description'],
-                    'published_at' => Carbon::parse($item['snippet']['publishedAt'])
+                    'id'            => $item->getId()->getVideoId(),
+                    'link'          => 'http://youtube.com/watch?v=' . $item->getId()->getVideoId(),
+                    'title'         => $item->getSnippet()->getTitle(),
+                    'thumbnail'     => $thumbnails->getMedium()->url,
+                    'description'   => $item->getSnippet()->getDescription(),
+                    'published_at'  => Carbon::parse($item->getSnippet()->getPublishedAt())
                 ));
             }
             return $videos;
