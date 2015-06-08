@@ -5,7 +5,14 @@ use Bluhex\YouTube\Models\Settings;
 use Carbon\Carbon;
 use October\Rain\Exception\ApplicationException;
 
-class YouTubeClient {
+/**
+ * YouTube API Client class
+ *
+ * @author Brendon Park
+ *
+ */
+class YouTubeClient
+{
 
     use \October\Rain\Support\Traits\Singleton;
 
@@ -34,9 +41,10 @@ class YouTubeClient {
      *
      * @param $channelId string YouTube channel ID
      * @param $maxItems int maximum number of items to display
+     * @param $thumbResolution string Thumbnail resolution (default, medium, high)
      * @return array|null array of videos or null if failure
      */
-    public function getLatest($channelId, $maxItems)
+    public function getLatest($channelId, $maxItems = 12, $thumbResolution = 'medium')
     {
         try {
             // Build the query and submit it
@@ -53,13 +61,32 @@ class YouTubeClient {
                     continue;
                 }
 
+                // Get the desired thumbnail resolution, YouTube's API doesn't support a proper high-res thumbnail
                 $thumbnails = $item->snippet->getThumbnails();
+                switch($thumbResolution)
+                {
+                    case 'full-resolution':
+                        $thumbnail = 'http://img.youtube.com/vi/' . $item->getId()->getVideoId() . '/maxresdefault.jpg';
+                        break;
+                    case 'default':
+                        $thumbnail = $thumbnails->getDefault()->url;
+                        break;
+                    case 'medium':
+                        $thumbnail = $thumbnails->getMedium()->url;
+                        break;
+                    case 'high':
+                        $thumbnail = $thumbnails->getHigh()->url;
+                        break;
+                    default:
+                        $thumbnail = $thumbnails->getDefault()->url;
+                        break;
+                }
 
                 array_push($videos, array(
                     'id'            => $item->getId()->getVideoId(),
                     'link'          => 'http://youtube.com/watch?v=' . $item->getId()->getVideoId(),
                     'title'         => $item->getSnippet()->getTitle(),
-                    'thumbnail'     => $thumbnails->getMedium()->url,
+                    'thumbnail'     => $thumbnail,
                     'description'   => $item->getSnippet()->getDescription(),
                     'published_at'  => Carbon::parse($item->getSnippet()->getPublishedAt())
                 ));
@@ -74,10 +101,10 @@ class YouTubeClient {
         }
     }
 
-    public function getLatestCacheKey($channelId, $maxItems)
+    public function getLatestCacheKey($channelId, $maxItems, $thumbResolution)
     {
         // Components with the same channel and item count will use the same cached response
-        return 'bluhex_ytvideos_' . $channelId . '_' . $maxItems;
+        return 'bluhex_ytvideos_' . $channelId . '_' . $maxItems . '_' . $thumbResolution;
     }
 
 }

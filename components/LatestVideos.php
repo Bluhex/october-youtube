@@ -37,6 +37,16 @@ class LatestVideos extends ComponentBase
                 'title' => 'Max Items',
                 'description' => 'Maximum number of results',
                 'default' => '12'
+            ],
+            'thumb_resolution' => [
+                'title' => 'Thumbnail Size',
+                'description' => "Thumbnails may return cropped images as per the YouTube API.
+                                    However, 'Full Resolution' may fail to find an image, but won't be cropped.",
+                'default' => 'medium',
+                'options' => [  'full-resolution' => 'Full Resolution',
+                                'high' => 'High',
+                                'medium' => 'Medium',
+                                'default' => 'Default']
             ]
         ];
     }
@@ -45,12 +55,14 @@ class LatestVideos extends ComponentBase
     {
         $channelId = $this->property('channel_id');
         $maxItems = $this->property('max_items');
-        $cacheKey = YouTubeClient::instance()->getLatestCacheKey($channelId, $maxItems);
+        $thumbResolution = $this->property('thumb_resolution');
+        $cacheKey = YouTubeClient::instance()->getLatestCacheKey($channelId, $maxItems, $thumbResolution);
 
-        $this->videos = Cache::remember($cacheKey, Settings::get('cache_time'), function() use ($channelId, $maxItems) {
-
-            return YouTubeClient::instance()->getLatest($channelId, $maxItems);
-
+        $this->videos = Cache::remember($cacheKey,
+                                        Settings::get('cache_time'),
+                                        function() use ($channelId, $maxItems, $thumbResolution)
+        {
+            $this->videos =  YouTubeClient::instance()->getLatest($channelId, $maxItems, $thumbResolution);
         });
     }
 
