@@ -40,6 +40,7 @@ class LatestVideos extends ComponentBase
             ],
             'thumb_resolution' => [
                 'title' => 'Thumbnail Size',
+                'type' => 'dropdown',
                 'description' => "Thumbnails may return cropped images as per the YouTube API.
                                     However, 'Full Resolution' may fail to find an image, but won't be cropped.",
                 'default' => 'medium',
