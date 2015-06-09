@@ -62,7 +62,7 @@ class LatestVideos extends ComponentBase
                                         Settings::get('cache_time'),
                                         function() use ($channelId, $maxItems, $thumbResolution)
         {
-            $this->videos =  YouTubeClient::instance()->getLatest($channelId, $maxItems, $thumbResolution);
+            return  YouTubeClient::instance()->getLatest($channelId, $maxItems, $thumbResolution);
         });
     }
 

@@ -1,3 +1,4 @@
 1.0.1: First version of Bluhex - YouTube Videos
 1.0.2: Made YouTube client more accessible to third parties
 1.0.3: Thumbnail resolution is now selectable
+1.0.4: Fixed caching issue causing no results to display
