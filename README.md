@@ -29,6 +29,13 @@ Use the ```Latest Videos``` component to display a list of the latest videos for
 
 - ```max_items```: Maximum number of videos to display, at this time there is no pagination support.
 
+- ```thumb_resolution```: The resolution of the thumbnail. YouTube isn't great about their thumbnails so there are 4 options:
+ - Default: Thumbnail is resized into 120 x 90 with black bars added if needed to fill the aspect ratio.
+ - Medium (default option): Thumbnail is resized into 320 x 180 with black bars added if needed to fill the aspect ratio.
+ - High: Thumbnail is resized into 480 x 360 with black bars added if needed to fill the aspect ratio.
+ - Full Resolution is the absolute highest resolution provided by YouTube. This method isn't part of the API, but is the closest to the original thumbnail uploaded by the user. This thumbnail may fail to load, but have yet to see this complaint.
+
+
 ### Creating a custom partial
 
 Under the ```CMS > Partials``` menu, create a new partial called ``` latestVideos/default.htm ```. 
