@@ -17,9 +17,13 @@ A simple plugin interface with YouTube for October CMS.
 ##### Getting an API Key
 
 1. Head on over to https://console.developers.google.com/project and either select your existing project or create a new one.
-2. Under "APIs" enable "YouTube data API v3"
-3. Go to Credentials and under "Public API access" select "Create a new key"
-4. Copy the new API Key into the settings and save.
+2. Open the side bar and select 'API Manager'
+3. Select or search for YouTube Data API
+4. Click on 'Enable'
+5. Select 'Credentials' from the sidebar
+6. Select 'Create credentials' -> 'API key' -> 'Server key'
+7. Name the key whatever you like and enter your IP address into the 'Accept requests from these server IP addresses' and create
+8. Copy the new API Key into the settings and save.
 
 ### Latest videos
 
@@ -33,7 +37,7 @@ Use the ```Latest Videos``` component to display a list of the latest videos for
  - Default: Thumbnail is resized into 120 x 90 with black bars added if needed to fill the aspect ratio.
  - Medium (default option): Thumbnail is resized into 320 x 180 with black bars added if needed to fill the aspect ratio.
  - High: Thumbnail is resized into 480 x 360 with black bars added if needed to fill the aspect ratio.
- - Full Resolution is the absolute highest resolution provided by YouTube. This method isn't part of the API, but is the closest to the original thumbnail uploaded by the user. This thumbnail may fail to load, but have yet to see this complaint.
+ - Full Resolution is the absolute highest resolution provided by YouTube. This method isn't part of the API, but is the closest to the original thumbnail uploaded by the user.
 
 
 ### Creating a custom partial

@@ -3,6 +3,6 @@
     "description": "Gets the latest video from a YouTube Channel",
     "require": {
         "php": ">=5.4.0",
-        "google/apiclient": "dev-master"
+        "google/apiclient": "^2.0.0@RC"
     }
 }

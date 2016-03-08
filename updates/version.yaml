@@ -3,3 +3,4 @@
 1.0.3: Thumbnail resolution is now selectable
 1.0.4: Fixed caching issue causing no results to display
 1.0.5: Made thumbnail resolution selection easier
+1.0.6: Updated to the latest Google API Library
