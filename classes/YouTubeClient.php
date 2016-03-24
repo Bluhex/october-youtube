@@ -66,7 +66,7 @@ class YouTubeClient
                 switch($thumbResolution)
                 {
                     case 'full-resolution':
-                        $thumbnail = 'http://img.youtube.com/vi/' . $item->getId()->getVideoId() . '/maxresdefault.jpg';
+                        $thumbnail = 'https://img.youtube.com/vi/' . $item->getId()->getVideoId() . '/maxresdefault.jpg';
                         break;
                     case 'default':
                         $thumbnail = $thumbnails->getDefault()->url;
