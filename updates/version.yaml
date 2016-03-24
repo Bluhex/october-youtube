@@ -4,3 +4,4 @@
 1.0.4: Fixed caching issue causing no results to display
 1.0.5: Made thumbnail resolution selection easier
 1.0.6: Updated to the latest Google API Library
+1.0.7: Full resolution thumbnails are now loaded over https

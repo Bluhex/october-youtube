@@ -84,7 +84,7 @@ class YouTubeClient
 
                 array_push($videos, array(
                     'id'            => $item->getId()->getVideoId(),
-                    'link'          => 'http://youtube.com/watch?v=' . $item->getId()->getVideoId(),
+                    'link'          => 'https://youtube.com/watch?v=' . $item->getId()->getVideoId(),
                     'title'         => $item->getSnippet()->getTitle(),
                     'thumbnail'     => $thumbnail,
                     'description'   => $item->getSnippet()->getDescription(),
